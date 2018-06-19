@@ -31,10 +31,10 @@ node {
          https://registry.hub.docker.com*/
         docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {
             //${env.BUILD_NUMBER}
-            docker.push("mabi/flask")
+            app.push("mabi/flask")
             //app.push("mabi")
             //app.push("latest")
-            app.push()
+            //app.push()
         }
     }
 }
