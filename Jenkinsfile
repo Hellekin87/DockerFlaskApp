@@ -30,8 +30,8 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. 
          
          https://registry.hub.docker.com*/
-        docker.withRegistry('mabi', 'docker-hub-credentials') {
-            /*app.push("${env.BUILD_NUMBER}")*/
+        docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
+            app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
     }
