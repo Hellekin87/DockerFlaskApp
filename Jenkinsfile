@@ -38,10 +38,18 @@ node {
         }*/
         docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {
 
-        def customImage = docker.build("my-image:${env.BUILD_ID}")
-
-        /* Push the container to the custom Registry */
-        customImage.push("mabi")
+        echo "Login Successful"
+            
+            
+            
+        sh " docker tag flask mabi/jenkins_published_image:latest"
+        sh " docker push mabi/jenkins_published_image:flask"  
+            
+          
+            /* Push the container to the custom Registry
+            docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage
+            docker push YOUR_DOCKERHUB_NAME/firstimage
+             */
     }
     }
 }
