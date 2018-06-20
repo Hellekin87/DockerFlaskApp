@@ -1,6 +1,8 @@
 node {
     def app
      environment {
+        CONTAINER_NAME = "container"
+        REPOSITORY = "repo1"
         DOCKER_PRIVATE = credentials('docker-hub-credentials')
     }
 
@@ -32,7 +34,7 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
          
         
-        echo $(DOCKER_PRIVATE)
+        echo $(CONTAINER_NAME)
         echo "Login Successful"
             
         sh " docker tag flask mabi/jenkins_published_image:latest"
