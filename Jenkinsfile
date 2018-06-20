@@ -42,8 +42,8 @@ node {
             
             
             
-        sh " docker tag flask mabi/jenkins_published_image:latest"
-        sh " docker push mabi/jenkins_published_image:flask"  
+        sh " docker tag flask mabi/jenkins_latest_image:latest"
+        sh " docker push mabi/jenkins_latest_image:flask"  
             
           
             /* Push the container to the custom Registry
