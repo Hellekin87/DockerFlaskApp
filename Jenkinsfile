@@ -27,14 +27,21 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. 
-         
-         https://registry.hub.docker.com*/
+         /*
+         https://registry.hub.docker.com
         docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {
             //${env.BUILD_NUMBER}
             app.push("mabi/flask")
             //app.push("mabi")
             //app.push("latest")
             //app.push()
-        }
+        }*/
+        docker.withRegistry('https://registry.example.com', 'credentials-id') {
+
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
+    }
     }
 }
