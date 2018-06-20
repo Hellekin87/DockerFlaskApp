@@ -34,7 +34,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
 
-        echo $JOB_NAME
+         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} name "
         echo "Login Successful... start pushing image to docker-hub"
 
         sh " docker tag flask mabi/jenkins_published_image:latest"
