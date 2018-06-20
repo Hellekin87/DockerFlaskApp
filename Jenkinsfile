@@ -34,7 +34,8 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
          
         
-        echo $(CONTAINER_NAME)
+        echo ${CONTAINER_NAME}
+        echo ${DOCKER_PRIVATE}
         echo "Login Successful"
             
         sh " docker tag flask mabi/jenkins_published_image:latest"
