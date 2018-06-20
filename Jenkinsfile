@@ -40,7 +40,7 @@ node {
             //app.push()
         }*/
         /*docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {*/
-        sh "docker login -u ${DOCKER_PRIVATE_USR} -p ${DOCKER_PRIVATE_PSW} ${PRIVATE_REGISTRY}"
+        sh "docker login --username=mabi --password=maik0815 docker.io"
         echo "Login Successful"
             
            // docker login docker.io
