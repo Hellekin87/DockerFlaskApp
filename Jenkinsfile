@@ -36,7 +36,7 @@ node {
             //app.push("latest")
             //app.push()
         }*/
-        docker.withRegistry('https://registry.example.com', 'docker-hub-credentials') {
+        docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {
 
         def customImage = docker.build("my-image:${env.BUILD_ID}")
 
