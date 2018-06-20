@@ -42,14 +42,14 @@ node {
             
             
             
-        sh " docker tag flask mabi/jenkins_latest_image:latest"
-        sh " docker push mabi/jenkins_latest_image:latest"  
+        sh " docker tag flask mabi/jenkins_published_image:latest"
+        sh " docker push mabi/jenkins_published_image:latest"  
             
           
             /* Push the container to the custom Registry
             docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage
             docker push YOUR_DOCKERHUB_NAME/firstimage
              */
-    }
+        }
     }
 }
