@@ -29,30 +29,16 @@ node {
         /* Finally, we'll push the image with two tags:
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. 
-         /*
-         https://registry.hub.docker.com
-        docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {
-            //${env.BUILD_NUMBER}
-            app.push("mabi/flask")
-            //app.push("mabi")
-            //app.push("latest")
-            //app.push()
-        }*/
-        /*docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {*/
-        sh "docker login --username=mabi --password=maik0815 docker.io"
+         * Pushing multiple tags is cheap, as all the layers are reused. */
+         
+        
+        echo $(DOCKER_PRIVATE)
         echo "Login Successful"
-            
-           // docker login docker.io
             
         sh " docker tag flask mabi/jenkins_published_image:latest"
         sh " docker push mabi/jenkins_published_image:latest"  
             
-          
-            /* Push the container to the custom Registry
-            docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage
-            docker push YOUR_DOCKERHUB_NAME/firstimage
-             */
-        /*}*/
+         
+       
     }
 }
