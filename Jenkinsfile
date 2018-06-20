@@ -35,7 +35,7 @@ node {
          
         
         echo ${CONTAINER_NAME}
-        echo ${DOCKER_PRIVATE}
+       
         echo "Login Successful"
             
         sh " docker tag flask mabi/jenkins_published_image:latest"
