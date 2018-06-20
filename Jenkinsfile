@@ -36,11 +36,11 @@ node {
             //app.push("latest")
             //app.push()
         }*/
-        docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {
+        /*docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {*/
 
         echo "Login Successful"
             
-            
+           // docker login docker.io
             
         sh " docker tag flask mabi/jenkins_published_image:latest"
         sh " docker push mabi/jenkins_published_image:latest"  
@@ -50,6 +50,6 @@ node {
             docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage
             docker push YOUR_DOCKERHUB_NAME/firstimage
              */
-        }
+        /*}*/
     }
 }
