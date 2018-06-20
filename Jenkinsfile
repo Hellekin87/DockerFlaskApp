@@ -1,12 +1,6 @@
 
 node {
     def app
-     environment {
-        CONTAINER_NAME = "container"
-        REPOSITORY = "repo1"
-        DOCKER_PRIVATE = credentials('docker-hub-credentials')
-    }
-
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
@@ -16,13 +10,13 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("flask")
+        echo "Start building the image.."
+        app = docker.build(${env.JOB_NAME})
     }
 
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
-
         app.inside {
             sh 'echo "Tests passed"'
         }
@@ -34,11 +28,11 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
 
-        echo "${env.JOB_NAME} ${env.CONTAINER_NAME}" 
+        echo "${env.JOB_NAME}" 
         echo "Login Successful... start pushing image to docker-hub"
 
-        sh " docker tag flask mabi/jenkins_published_image:latest"
-        sh " docker push mabi/jenkins_published_image:latest"  
+        sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins:latest"
+        sh " docker push mabi/${env.JOB_NAME}_jenkins:latest"  
     }
 }
 
