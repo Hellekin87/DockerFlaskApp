@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         echo "Start building the image.."
-        app = docker.build(${env.JOB_NAME})
+        app = docker.build("${env.JOB_NAME}")
     }
 
     stage('Test image') {
