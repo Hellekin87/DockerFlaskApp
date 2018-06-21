@@ -27,15 +27,19 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials',
+                    usernameVariable: 'USERNAME',
+                    passwordVariable: 'PASSWORD')])
+                {
+                    echo 'username='+USERNAME
+                    echo 'password='+PASSWORD
+                     
+                    echo "Login Successful... start pushing image to docker-hub"
 
-        echo "${env.JOB_NAME}" 
-        echo $login
-        echo "${login}"
-        echo "${env.login}"
-        echo "Login Successful... start pushing image to docker-hub"
-        
-        sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins:latest"
-        sh " docker push mabi/${env.JOB_NAME}_jenkins:latest"  
+                    sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins:latest"
+                    sh " docker push mabi/${env.JOB_NAME}_jenkins:latest"                     
+                }
+
     }
 }
 
