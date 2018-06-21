@@ -31,9 +31,7 @@ node {
                     usernameVariable: 'USERNAME',
                     passwordVariable: 'PASSWORD')])
                 {
-                    echo 'username='+USERNAME
-                    echo 'password='+PASSWORD
-                     
+                    sh "docker login --username="+USERNAME+"--password="+PASSWORD+" docker.io"
                     echo "Login Successful... start pushing image to docker-hub"
 
                     sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins:latest"
