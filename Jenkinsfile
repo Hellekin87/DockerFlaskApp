@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         echo "Start building the image.."
-        app = docker.build("${env.JOB_NAME}")
+        app = docker.build("task")
     }
 
     stage('Test image') {
@@ -31,8 +31,8 @@ node {
         echo "${env.JOB_NAME}" 
         echo "Login Successful... start pushing image to docker-hub"
 
-        sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins:latest"
-        sh " docker push mabi/${env.JOB_NAME}_jenkins:latest"  
+        sh " docker tag task mabi/task_jenkins:latest"
+        sh " docker push mabi/task_jenkins:latest"  
     }
 }
 
