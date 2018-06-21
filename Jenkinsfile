@@ -29,10 +29,11 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
 
         echo "${env.JOB_NAME}" 
+        
         echo "Login Successful... start pushing image to docker-hub"
-
-        sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins"
-        sh " docker push mabi/${env.JOB_NAME}_jenkins"  
+        
+        sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins:latest"
+        sh " docker push mabi/${env.JOB_NAME}_jenkins:latest"  
     }
 }
 
