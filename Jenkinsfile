@@ -28,10 +28,10 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials',
-                    usernameVariable: 'USERNAME',
-                    passwordVariable: 'PASSWORD')])
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASSWORD')])
                 {
-                    sh "docker login --username="+USERNAME+"--password="+PASSWORD+" docker.io"
+                    sh "docker login --username="+DOCKER_USER+"--password="+DOCKER_PASSWORD+" docker.io"
                     echo "Login Successful... start pushing image to docker-hub"
 
                     sh " docker tag ${env.JOB_NAME} mabi/${env.JOB_NAME}_jenkins:latest"
